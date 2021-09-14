@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "udb-dse-desafio01", "udb-dse-desafio01\udb-dse-desafio01.csproj", "{9ADA20F0-0E41-495F-95D6-7BCB37883EF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ADA20F0-0E41-495F-95D6-7BCB37883EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADA20F0-0E41-495F-95D6-7BCB37883EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADA20F0-0E41-495F-95D6-7BCB37883EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADA20F0-0E41-495F-95D6-7BCB37883EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B45D30BF-2BDC-4ACA-8CF3-DC67E2A2DEC0}
+	EndGlobalSection
+EndGlobal
