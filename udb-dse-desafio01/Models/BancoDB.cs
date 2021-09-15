@@ -20,7 +20,11 @@ namespace udb_dse_desafio01.Models
     // Agregue un DbSet para cada tipo de entidad que desee incluir en el modelo. Para obtener más información
     // sobre cómo configurar y usar un modelo Code First, vea http://go.microsoft.com/fwlink/?LinkId=390109.
 
-    //public virtual DbSet<Contacto> Contactos { get; set; }
+    public virtual DbSet<Cliente> Clientes { get; set; }
+    public virtual DbSet<Cuenta> Cuentas { get; set; }
+    public virtual DbSet<TipoCuenta> CuentaTipos { get; set; }
+    public virtual DbSet<Transaccion> Transacciones { get; set; }
+    public virtual DbSet<TipoTransaccion> TransaccionTipos { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
@@ -31,47 +35,53 @@ namespace udb_dse_desafio01.Models
   [Table("clientes")]
   public class Cliente
   {
+    [Key]
     public int Id { get; set; }
-
     public string Nombres { get; set; }
-
     public string PrimerApellido { get; set; }
-
     public string SegundoApellido { get; set; }
-
     public string Telefono { get; set; }
-
     public string Correo { get; set; }
   }
 
   [Table("cuenta_tipos")]
-  public class TipoCuentaBancaria
+  public class TipoCuenta
   {
+    [Key]
     public int Id { get; set; }
 
-    [Column("TipoCuentaBancaria")]
+    [Column("TipoCuenta")]
     public string Nombre { get; set; }
 
     public bool Activo { get; set; }
   }
 
   [Table("cuentas")]
-  public class CuentaBancaria
+  public class Cuenta
   {
+    [Key]
     public int Id { get; set; }
-
-    public int IdCliente { get; set; }
-
-    public int Tipo { get; set; }
-
     public string Moneda { get; set; }
+
+    [Column("IdCliente")]
+    public int ClienteId { get; set; }
+
+    [ForeignKey("ClienteId")]
+    public virtual Cliente Cliente { get; set; }
+
+    [Column("Tipo")]
+    public int TipoId { get; set; }
+
+    [ForeignKey("TipoId")]
+    public virtual TipoCuenta Tipo { get; set; }
   }
 
   [Table("transacciones_tipos")]
   public class TipoTransaccion
   {
+    [Key]
     public int Id { get; set; }
-    
+
     [Column("TipoTransaccion")]
     public string Nombre { get; set; }
   }
@@ -79,18 +89,23 @@ namespace udb_dse_desafio01.Models
   [Table("transacciones")]
   public class Transaccion
   {
+    [Key]
     public int Id { get; set; }
-
-    public int IdCuentaBancaria { get; set; }
-
-    public int TipoTransaccion { get; set; }
-
     public int Monto { get; set; }
-
     public string Estado { get; set; }
-
     public DateTime FechaTransaccion { get; set; }
-
     public DateTime FechaAplicacion { get; set; }
+
+    [Column("IdCuentaBancaria")]
+    public int CuentaId { get; set; }
+
+    [ForeignKey("CuentaId")]
+    public virtual Cuenta Cuenta { get; set; }
+
+    [Column("TipoTransaccion")]
+    public int TipoId { get; set; }
+
+    [ForeignKey("TipoId")]
+    public virtual TipoTransaccion Tipo { get; set; }
   }
 }
