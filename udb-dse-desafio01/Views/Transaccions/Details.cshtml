@@ -1,0 +1,66 @@
+﻿@model udb_dse_desafio01.Models.Transaccion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta.Moneda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta.Moneda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaTransaccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaTransaccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAplicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAplicacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

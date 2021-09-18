@@ -40,9 +40,17 @@ namespace udb_dse_desafio01.Models
     public string Nombres { get; set; }
     public string PrimerApellido { get; set; }
     public string SegundoApellido { get; set; }
+
+    [StringLength(20)]
+    [Required(ErrorMessage = "Campo número de celular requerido")]
     public string Telefono { get; set; }
+
+    [StringLength(100)]
+    [EmailAddress(ErrorMessage ="El correo no cumple con el formato correcto")]
     public string Correo { get; set; }
   }
+
+
 
   [Table("cuenta_tipos")]
   public class TipoCuenta
@@ -50,11 +58,14 @@ namespace udb_dse_desafio01.Models
     [Key]
     public int Id { get; set; }
 
+    [Required(ErrorMessage = "Nombre de la cuenta requerido")]
     [Column("TipoCuenta")]
     public string Nombre { get; set; }
 
     public bool Activo { get; set; }
   }
+
+
 
   [Table("cuentas")]
   public class Cuenta
@@ -62,50 +73,58 @@ namespace udb_dse_desafio01.Models
     [Key]
     public int Id { get; set; }
     public string Moneda { get; set; }
-
-    [Column("IdCliente")]
+        [Required]
+        [Column("IdCliente")]
     public int ClienteId { get; set; }
-
-    [ForeignKey("ClienteId")]
+        [Required]
+        [ForeignKey("ClienteId")]
     public virtual Cliente Cliente { get; set; }
-
-    [Column("Tipo")]
+        [Required]
+        [Column("Tipo")]
     public int TipoId { get; set; }
-
-    [ForeignKey("TipoId")]
+        [Required]
+        [ForeignKey("TipoId")]
     public virtual TipoCuenta Tipo { get; set; }
   }
+
+
 
   [Table("transacciones_tipos")]
   public class TipoTransaccion
   {
     [Key]
     public int Id { get; set; }
-
-    [Column("TipoTransaccion")]
+        [Required]
+        [Column("TipoTransaccion")]
     public string Nombre { get; set; }
   }
+
+
 
   [Table("transacciones")]
   public class Transaccion
   {
     [Key]
     public int Id { get; set; }
+
     public int Monto { get; set; }
     public string Estado { get; set; }
+    [Required]
     public DateTime FechaTransaccion { get; set; }
+
+    [Required]
     public DateTime FechaAplicacion { get; set; }
-
-    [Column("IdCuentaBancaria")]
+        [Required]
+        [Column("IdCuentaBancaria")]
     public int CuentaId { get; set; }
-
-    [ForeignKey("CuentaId")]
+        [Required]
+        [ForeignKey("CuentaId")]
     public virtual Cuenta Cuenta { get; set; }
-
-    [Column("TipoTransaccion")]
+        [Required]
+        [Column("TipoTransaccion")]
     public int TipoId { get; set; }
-
-    [ForeignKey("TipoId")]
+        [Required]
+        [ForeignKey("TipoId")]
     public virtual TipoTransaccion Tipo { get; set; }
   }
 }

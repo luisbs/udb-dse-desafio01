@@ -1,0 +1,63 @@
+﻿@model IEnumerable<udb_dse_desafio01.Models.Transaccion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuenta.Moneda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaTransaccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAplicacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuenta.Moneda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaTransaccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAplicacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
